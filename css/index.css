@@ -2,10 +2,6 @@ body{
 	padding: 100px 150px;
 	text-align:center;
 }
-.title {
-	margin: 0;
-	font-weight: bold;
-}
 .nav-bar{
 	margin: 0 100px;
 }
@@ -29,4 +25,16 @@ body{
 .export_bar{
 	margin-right:100px;
 	float:right;
+}
+.table-container{
+	padding:0 100px;
+}
+table, th, td{
+	border:solid 1px;
+	border-collapse: collapse;
+	font-weight: bold;
+	width:100%;
+}
+th{
+	width: 25%;
 }
