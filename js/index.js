@@ -10,30 +10,46 @@ var data_in_server = [   //for example
 	{first_name:'f_i', priceUSD:10, priceUAH: 250},
 	{first_name:'f_j', priceUSD:10, priceUAH: 250},
 	{first_name:'f_k', priceUSD:10, priceUAH: 250}
+	
 ];
 
 
 
 function TableApi() {
 	var data;
-	function getData(){  //get data from server
+	var step = 10;              // count of items for one page
+	var currentPage = 1; 		
+	var countPages;             // count of all pages  
+
+	function getData(){         //get data from server
 		return data_in_server;
 	}
 
-	this.createTable = function() {
+	function getCountPages(countItems) {
+		var count = countItems/step;
+		// if digit is float
+		if((count ^ 0) !== count) {
+			countPages = (count ^ 0)+1;
+		}else{
+			countPages = count;
+		}
+	}
+
+	function createTable() {
 		data = getData();
+		getCountPages(data.length);
 		var tbody = document.createElement('tbody');
 	
 	var td = document.createElement('td');
-		for(var i = 0; i < data.length; i++) {
+		for(var i = 0; i < step; i++) {
 			var tr = document.createElement('tr');
 			var td = document.createElement('td');
-			td.textContent = i+1;
+			td.innerText = i+1;
 			tr.appendChild(td);
 
 			for(var key in data[i]) {
 				var td = document.createElement('td');
-				td.textContent = data[i][key];
+				td.innerText = data[i][key];
 				tr.appendChild(td);
 			}
 			tbody.appendChild(tr);
@@ -42,9 +58,25 @@ function TableApi() {
 		table.appendChild(tbody);
 	}
 
+	function tFoodShow() {
+		var footer = document.getElementById('table_footer');
+		currentPage < countPages ? footer.style.display = 'none': footer.style.display = 'block-inline';
+	}
+
+	function currPageShow() {
+		document.getElementById('page_num').innerText = currentPage+' from '+countPages;
+	}
+
+	this.init = function() {
+		createTable();
+		currPageShow();
+		tFoodShow();	
+	}
+
+
 }
 
 window.onload = function() {
 	var table = new TableApi();
-	table.createTable();
+	table.init();	
 }

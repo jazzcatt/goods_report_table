@@ -30,6 +30,7 @@ body{
 }
 caption{
 	margin-bottom:20px;
+	font-weight: bold;
 }
 table{
 	width: 100%;
@@ -37,9 +38,11 @@ table{
 table, th, td{
 	border:solid 1px;
 	border-collapse: collapse;
-	font-weight: bold;
 }
 th,td{
 	width: 25%;
 	height:2em;
+}
+tbody tr:hover{
+	background-color: #e6e6e6;
 }

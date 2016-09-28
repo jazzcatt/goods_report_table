@@ -10,9 +10,9 @@
 	<div class='nav-bar'>
 		<input type='button' id='add_item' value='ADD ITEM'>
 		<div class='pagin_bar'>
-			<input type='button' value='<<'>
-			<span class='page_num'>1</span>
-			<input type='button' value='>>'>
+			<input id='left_arrow' type='button' value='<<'>
+			<span id='page_num'></span>
+			<input id='right_arrow' type='button' value='>>'>
 		</div>
 		<div class='export_bar'>
 			<input type='button' value='PRINT'>
@@ -36,7 +36,13 @@
 				<th>price(UAH)</th>
 			</tr>
 		</thead>
-
+		<tfoot id='table_footer'>
+			<tr>
+				<td colspan='2'>Общее</td>
+				<td id='all_count_usd'></td>
+				<td id='all_count_uah'></td>
+			</tr>
+		</tfoot>
 	</table>
 	</div>
 </body>
