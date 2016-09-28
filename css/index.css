@@ -1,0 +1,32 @@
+body{
+	padding: 100px 150px;
+	text-align:center;
+}
+.title {
+	margin: 0;
+	font-weight: bold;
+}
+.nav-bar{
+	margin: 0 100px;
+}
+.nav-bar *{
+	display: inline-block;
+	font-size: 1em;
+	font-weight: bolder;
+}
+.nav-bar input{
+	background-color: white;
+	height:2.5em;
+	border-radius:5px;
+	border: none;
+	outline:none;
+
+}
+.nav-bar input:hover{
+	background-color: #e6e6e6;
+	cursor: pointer;
+}
+.export_bar{
+	margin-right:100px;
+	float:right;
+}
