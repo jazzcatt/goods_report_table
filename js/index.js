@@ -60,7 +60,9 @@ function TableApi() {
 
 	function tFoodShow() {
 		var footer = document.getElementById('table_footer');
+		var sinature = document.getElementById('signature');
 		currentPage < countPages ? footer.style.display = 'none': footer.style.display = 'block-inline';
+		signature.style.display = footer.style.display;
 	}
 
 	function currPageShow() {
