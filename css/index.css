@@ -21,6 +21,11 @@ body{
 	background-color: #e6e6e6;
 	cursor: pointer;
 }
+.nav-bar input[disabled]:hover{
+	color: #F1948A;
+	background-color: white;
+	cursor:default;
+}
 .export_bar{
 	margin-right:100px;
 	float:right;
