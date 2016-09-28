@@ -16,7 +16,6 @@ body{
 	border-radius:5px;
 	border: none;
 	outline:none;
-
 }
 .nav-bar input:hover{
 	background-color: #e6e6e6;
@@ -29,12 +28,18 @@ body{
 .table-container{
 	padding:0 100px;
 }
+caption{
+	margin-bottom:20px;
+}
+table{
+	width: 100%;
+}
 table, th, td{
 	border:solid 1px;
 	border-collapse: collapse;
 	font-weight: bold;
-	width:100%;
 }
-th{
+th,td{
 	width: 25%;
+	height:2em;
 }
