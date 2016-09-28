@@ -73,7 +73,6 @@ function TableApi() {
 		tFoodShow();	
 	}
 
-
 }
 
 window.onload = function() {

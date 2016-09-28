@@ -30,7 +30,7 @@ body{
 	margin-right:100px;
 	float:right;
 }
-.table-container{
+.table-container, #signature{
 	padding:0 100px;
 }
 caption{
@@ -51,3 +51,18 @@ th,td{
 tbody tr:hover{
 	background-color: #e6e6e6;
 }
+
+#signature{
+	margin: 40px 0;
+}
+.sign{
+	float:right;
+	border-top: solid 1px;
+	margin: 20px 50px;
+	
+}
+
+#sign_name{
+	width: 40%;
+}
+
