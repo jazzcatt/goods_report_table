@@ -9,7 +9,22 @@ var data_in_server = [   //for example
 	{first_name:'f_h', priceUSD:10, priceUAH: 250},
 	{first_name:'f_i', priceUSD:10, priceUAH: 250},
 	{first_name:'f_j', priceUSD:10, priceUAH: 250},
-	{first_name:'f_k', priceUSD:10, priceUAH: 250}
+	{first_name:'f_k', priceUSD:10, priceUAH: 250},
+		{first_name:'f_c', priceUSD:10, priceUAH: 250},
+	{first_name:'f_d', priceUSD:10, priceUAH: 250},
+	{first_name:'f_e', priceUSD:10, priceUAH: 250},
+		{first_name:'f_c', priceUSD:10, priceUAH: 250},
+	{first_name:'f_d', priceUSD:10, priceUAH: 250},
+	{first_name:'f_e', priceUSD:10, priceUAH: 250},
+		{first_name:'f_c', priceUSD:10, priceUAH: 250},
+	{first_name:'f_d', priceUSD:10, priceUAH: 250},
+	{first_name:'f_e', priceUSD:10, priceUAH: 250},
+		{first_name:'f_c', priceUSD:10, priceUAH: 250},
+	{first_name:'f_d', priceUSD:10, priceUAH: 250},
+	{first_name:'f_e', priceUSD:10, priceUAH: 250},
+		{first_name:'f_c', priceUSD:10, priceUAH: 250},
+	{first_name:'f_d', priceUSD:10, priceUAH: 250},
+	{first_name:'f_e', priceUSD:10, priceUAH: 250}
 	
 ];
 
@@ -76,7 +91,7 @@ function TableApi() {
 			left_arrow.disabled=true;
 			return;
 		}
-		if(currentPage > 1 || currentPage == countPages) {
+		if(currentPage > 1 && currentPage == countPages) {
 			right_arrow.disabled = true;
 			left_arrow.disabled = false;
 			return;
@@ -84,6 +99,11 @@ function TableApi() {
 		if(currentPage == 1 && countPages != 1) {
 			left_arrow.disabled = true;
 			right_arrow.disabled = false;
+			return;
+		}
+		if(currentPage != 1 && currentPage != countPages) {
+			right_arrow.disabled = false;
+			left_arrow.disabled = false;
 		}
 	}
 	this.init = function() {
