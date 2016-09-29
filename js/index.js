@@ -68,11 +68,40 @@ function TableApi() {
 	function currPageShow() {
 		document.getElementById('page_num').innerText = currentPage+' from '+countPages;
 	}
-
+	function arrowButtonControl() {
+		var right_arrow = document.querySelector('#right_arrow'); 
+		var left_arrow = document.querySelector('#left_arrow'); 
+		if(countPages == 1) {
+			right_arrow.disabled=true;
+			left_arrow.disabled=true;
+			return;
+		}
+		if(currentPage > 1 || currentPage == countPages) {
+			right_arrow.disabled = true;
+			left_arrow.disabled = false;
+			return;
+		}
+		if(currentPage == 1 && countPages != 1) {
+			left_arrow.disabled = true;
+			right_arrow.disabled = false;
+		}
+	}
 	this.init = function() {
 		createTable();
 		currPageShow();
-		tFoodShow();	
+		tFoodShow();
+
+		document.getElementsByClassName('pagin_bar')[0].addEventListener('click', this.changePage);	
+	}
+	this.changePage = function(e) {
+		if(e.target.id == 'right_arrow') {
+			currentPage +=1;	
+		}else{
+			currentPage -=1;
+		}
+		arrowButtonControl();
+		currPageShow();
+		tFoodShow();
 	}
 
 }
@@ -80,4 +109,5 @@ function TableApi() {
 window.onload = function() {
 	var table = new TableApi();
 	table.init();	
+
 }
