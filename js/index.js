@@ -76,8 +76,8 @@ function TableApi() {
 	function tFoodShow() {
 		var footer = document.getElementById('table_footer');
 		var sinature = document.getElementById('signature');
-		currentPage < countPages ? footer.style.display = 'none': footer.style.display = 'block-inline';
-		signature.style.display = footer.style.display;
+		//currentPage < countPages ? footer.style.display = 'none': footer.style.display = 'block-inline';
+		//signature.style.display = footer.style.display;
 	}
 
 	function currPageShow() {
@@ -111,10 +111,14 @@ function TableApi() {
 		currPageShow();
 		tFoodShow();
 
-		document.getElementsByClassName('pagin_bar')[0].addEventListener('click', this.changePage);	
+		document.getElementById('pagin_bar').onclick = function (e){
+			changePage(e);
+		}
 	}
-	this.changePage = function(e) {
-		if(e.target.id == 'right_arrow') {
+	 	function changePage(e) {
+		var e = e || window.event;                   //for IE 
+		var evtTarget = e.target || e.srcElement;
+		if(evtTarget.id == 'right_arrow') {
 			currentPage +=1;	
 		}else{
 			currentPage -=1;
