@@ -75,9 +75,10 @@ function TableApi() {
 
 	function tFoodShow() {
 		var footer = document.getElementById('table_footer');
-		var sinature = document.getElementById('signature');
-		//currentPage < countPages ? footer.style.display = 'none': footer.style.display = 'block-inline';
-		//signature.style.display = footer.style.display;
+		var signature = document.getElementById('signature');
+		console.log(footer.style.display);
+		currentPage < countPages ? footer.style.display = 'none':footer.style.display = 'table-footer-group';
+ 		footer.style.display == 'table-footer-group' ? signature.style.display = 'block' : signature.style.display='none';
 	}
 
 	function currPageShow() {
