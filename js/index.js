@@ -36,8 +36,10 @@ function TableApi() {
 	var currentPage = 1; 		
 	var countPages;             // count of all pages  
 
-	function getData(){         //get data from server
-		return data_in_server;
+	function getData(){  
+	       //get data from server
+	    data = data_in_server;
+		return data;
 	}
 
 	function getCountPages(countItems) {
@@ -51,15 +53,16 @@ function TableApi() {
 	}
 
 	function createTable() {
-		data = getData();
 		getCountPages(data.length);
 		var tbody = document.createElement('tbody');
-	
+		var table = document.getElementById('report');
+		tbody.id = 'report_body';
+		table.contains(document.getElementById('report_body')) ? table.removeChild(document.getElementById('report_body')) : null;
 	var td = document.createElement('td');
 		for(var i = 0; i < step; i++) {
 			var tr = document.createElement('tr');
 			var td = document.createElement('td');
-			td.innerText = i+1;
+			td.innerText = (currentPage * step)+(i+1)-step;
 			tr.appendChild(td);
 
 			for(var key in data[i]) {
@@ -69,7 +72,7 @@ function TableApi() {
 			}
 			tbody.appendChild(tr);
 		}
-		var table = document.getElementById('report');
+		
 		table.appendChild(tbody);
 	}
 
@@ -108,6 +111,7 @@ function TableApi() {
 		}
 	}
 	this.init = function() {
+		getData();
 		createTable();
 		currPageShow();
 		tFoodShow();
@@ -124,6 +128,7 @@ function TableApi() {
 		}else{
 			currentPage -=1;
 		}
+		createTable();
 		arrowButtonControl();
 		currPageShow();
 		tFoodShow();
