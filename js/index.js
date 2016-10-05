@@ -81,7 +81,6 @@ function TableApi() {
 	function tFoodShow() {
 		var footer = document.getElementById('table_footer');
 		var signature = document.getElementById('signature');
-		console.log(footer.style.display);
 		currentPage < countPages ? footer.style.display = 'none':footer.style.display = 'table-footer-group';
  		footer.style.display == 'table-footer-group' ? signature.style.display = 'block' : signature.style.display='none';
 	}
@@ -125,6 +124,9 @@ function TableApi() {
 	 	function changePage(e) {
 		var e = e || window.event;                   //for IE 
 		var evtTarget = e.target || e.srcElement;
+		if(evtTarget.disabled) {  //IE stop onclick event on disabled elem.
+			return;
+		}	
 		if(evtTarget.id == 'right_arrow') {
 			currentPage +=1;	
 		}else{
