@@ -10,21 +10,21 @@ var data_in_server = [   //for example
 	{first_name:'f_i', priceUSD:10, priceUAH: 250},
 	{first_name:'f_j', priceUSD:10, priceUAH: 250},
 	{first_name:'f_k', priceUSD:10, priceUAH: 250},
-		{first_name:'f_c', priceUSD:10, priceUAH: 250},
-	{first_name:'f_d', priceUSD:10, priceUAH: 250},
-	{first_name:'f_e', priceUSD:10, priceUAH: 250},
-		{first_name:'f_c', priceUSD:10, priceUAH: 250},
-	{first_name:'f_d', priceUSD:10, priceUAH: 250},
-	{first_name:'f_e', priceUSD:10, priceUAH: 250},
-		{first_name:'f_c', priceUSD:10, priceUAH: 250},
-	{first_name:'f_d', priceUSD:10, priceUAH: 250},
-	{first_name:'f_e', priceUSD:10, priceUAH: 250},
-		{first_name:'f_c', priceUSD:10, priceUAH: 250},
-	{first_name:'f_d', priceUSD:10, priceUAH: 250},
-	{first_name:'f_e', priceUSD:10, priceUAH: 250},
-		{first_name:'f_c', priceUSD:10, priceUAH: 250},
-	{first_name:'f_d', priceUSD:10, priceUAH: 250},
-	{first_name:'f_e', priceUSD:10, priceUAH: 250}
+	{first_name:'f_l', priceUSD:10, priceUAH: 250},
+	{first_name:'f_m', priceUSD:10, priceUAH: 250},
+	{first_name:'f_n', priceUSD:10, priceUAH: 250},
+	{first_name:'f_o', priceUSD:10, priceUAH: 250},
+	{first_name:'f_p', priceUSD:10, priceUAH: 250},
+	{first_name:'f_q', priceUSD:10, priceUAH: 250},
+	{first_name:'f_r', priceUSD:10, priceUAH: 250},
+	{first_name:'f_s', priceUSD:10, priceUAH: 250},
+	{first_name:'f_t', priceUSD:10, priceUAH: 250},
+	{first_name:'f_u', priceUSD:10, priceUAH: 250},
+	{first_name:'f_dv', priceUSD:10, priceUAH: 250},
+	{first_name:'f_w', priceUSD:10, priceUAH: 250},
+	{first_name:'f_x', priceUSD:10, priceUAH: 250},
+	{first_name:'f_y', priceUSD:10, priceUAH: 250},
+	{first_name:'f_z', priceUSD:10, priceUAH: 250}
 	
 ];
 
@@ -58,16 +58,18 @@ function TableApi() {
 		var table = document.getElementById('report');
 		tbody.id = 'report_body';
 		table.contains(document.getElementById('report_body')) ? table.removeChild(document.getElementById('report_body')) : null;
-	var td = document.createElement('td');
-		for(var i = 0; i < step; i++) {
+		var td = document.createElement('td');
+
+		for(var i = 0; i < step && i < data.length - (currentPage*step-step); i++) {
 			var tr = document.createElement('tr');
 			var td = document.createElement('td');
-			td.innerText = (currentPage * step)+(i+1)-step;
+			var elemNum = (currentPage * step)+i-step;
+			td.innerText = elemNum + 1;
 			tr.appendChild(td);
 
-			for(var key in data[i]) {
+			for(var key in data[elemNum]) {
 				var td = document.createElement('td');
-				td.innerText = data[i][key];
+				td.innerText = data[elemNum][key];
 				tr.appendChild(td);
 			}
 			tbody.appendChild(tr);
