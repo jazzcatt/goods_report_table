@@ -1,30 +1,30 @@
 var data_in_server = [   //for example
 	{first_name:'f_a', priceUSD:10, priceUAH: 250},
-	{first_name:'f_b', priceUSD:10, priceUAH: 250},
+	{first_name:'f_b', priceUSD:10, priceUAH: 230},
 	{first_name:'f_c', priceUSD:10, priceUAH: 250},
-	{first_name:'f_d', priceUSD:10, priceUAH: 250},
-	{first_name:'f_e', priceUSD:10, priceUAH: 250},
-	{first_name:'f_f', priceUSD:10, priceUAH: 250},
-	{first_name:'f_g', priceUSD:10, priceUAH: 250},
-	{first_name:'f_h', priceUSD:10, priceUAH: 250},
-	{first_name:'f_i', priceUSD:10, priceUAH: 250},
-	{first_name:'f_j', priceUSD:10, priceUAH: 250},
-	{first_name:'f_k', priceUSD:10, priceUAH: 250},
-	{first_name:'f_l', priceUSD:10, priceUAH: 250},
-	{first_name:'f_m', priceUSD:10, priceUAH: 250},
-	{first_name:'f_n', priceUSD:10, priceUAH: 250},
-	{first_name:'f_o', priceUSD:10, priceUAH: 250},
-	{first_name:'f_p', priceUSD:10, priceUAH: 250},
-	{first_name:'f_q', priceUSD:10, priceUAH: 250},
-	{first_name:'f_r', priceUSD:10, priceUAH: 250},
-	{first_name:'f_s', priceUSD:10, priceUAH: 250},
-	{first_name:'f_t', priceUSD:10, priceUAH: 250},
-	{first_name:'f_u', priceUSD:10, priceUAH: 250},
-	{first_name:'f_dv', priceUSD:10, priceUAH: 250},
-	{first_name:'f_w', priceUSD:10, priceUAH: 250},
-	{first_name:'f_x', priceUSD:10, priceUAH: 250},
-	{first_name:'f_y', priceUSD:10, priceUAH: 250},
-	{first_name:'f_z', priceUSD:10, priceUAH: 250}
+	{first_name:'f_d', priceUSD:6, priceUAH: 270},
+	{first_name:'f_e', priceUSD:2, priceUAH: 260},
+	{first_name:'f_f', priceUSD:5, priceUAH: 260},
+	{first_name:'f_g', priceUSD:10, priceUAH: 220},
+	{first_name:'f_h', priceUSD:10, priceUAH: 150},
+	{first_name:'f_i', priceUSD:8, priceUAH: 50},
+	{first_name:'f_j', priceUSD:11, priceUAH: 50},
+	{first_name:'f_k', priceUSD:10, priceUAH: 650},
+	{first_name:'f_l', priceUSD:10, priceUAH: 650},
+	{first_name:'f_m', priceUSD:1, priceUAH: 50},
+	{first_name:'f_n', priceUSD:11, priceUAH: 150},
+	{first_name:'f_o', priceUSD:17, priceUAH: 151},
+	{first_name:'f_p', priceUSD:13, priceUAH: 20},
+	{first_name:'f_q', priceUSD:13, priceUAH: 50},
+	{first_name:'f_r', priceUSD:10, priceUAH: 25},
+	{first_name:'f_s', priceUSD:5, priceUAH: 25},
+	{first_name:'f_t', priceUSD:10, priceUAH: 50},
+	{first_name:'f_u', priceUSD:18, priceUAH: 20},
+	{first_name:'f_dv', priceUSD:20, priceUAH: 50},
+	{first_name:'f_w', priceUSD:17, priceUAH: 251},
+	{first_name:'f_x', priceUSD:17, priceUAH: 251},
+	{first_name:'f_y', priceUSD:14, priceUAH: 253},
+	{first_name:'f_z', priceUSD:14, priceUAH: 240}
 	
 ];
 
@@ -82,9 +82,27 @@ function TableApi() {
 		var footer = document.getElementById('table_footer');
 		var signature = document.getElementById('signature');
 		currentPage < countPages ? footer.style.display = 'none':footer.style.display = 'table-footer-group';
- 		footer.style.display == 'table-footer-group' ? signature.style.display = 'block' : signature.style.display='none';
-	}
+ 		if(footer.style.display == 'table-footer-group') { 
+ 			signature.style.display = 'block' 
+ 			var total = getTotalCount();
+ 			document.getElementById('all_count_usd').innerText = total.USD;
+ 			document.getElementById('all_count_uah').innerText = total.UAH;
+ 		}else{
+ 	 		signature.style.display='none';
+ 		}
 
+	}
+	function getTotalCount() {
+		var total = {
+			USD : 0,
+			UAH : 0
+		}
+		for(var i = 0; i < data.length; i++) {
+			total.USD += data[i].priceUSD;
+			total.UAH += data[i].priceUAH;
+		}
+		return total;
+	}
 	function currPageShow() {
 		document.getElementById('page_num').innerText = currentPage+' from '+countPages;
 	}
