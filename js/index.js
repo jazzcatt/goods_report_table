@@ -138,6 +138,9 @@ function TableApi() {
 		document.getElementById('pagin_bar').onclick = function (e){
 			changePage(e);
 		}
+		document.getElementById('add_item').onclick = function() {
+			createModal();
+		}
 	}
 	 	function changePage(e) {
 		var e = e || window.event;                   //for IE 
@@ -154,6 +157,33 @@ function TableApi() {
 		arrowButtonControl();
 		currPageShow();
 		tFoodShow();
+	}
+	function createModal() {
+		var modal_bg = document.createElement('div');
+		var modal_form = document.createElement('div');
+		modal_bg.className = 'modal-bg';
+		modal_bg.id = 'modal_bg';
+
+		modal_form.className = 'modal-form';
+		modal_form.id = 'modal_form';
+		modal_form.innerHTML='<form>'+
+							'<div id="cross">&#215</div>'+
+							'<label>First Name</label>'+
+							'<input type="text"><br/>'+
+							'<label>Price(USD)</label>'+
+							'<input type="text" ><br>'+
+							'<label>Price(UAH)</label>'+
+							'<input type="text"><br>'+
+							'<input type="button" value="Добавить">'+
+							'<input type="button" value="Отмена">'+
+						'</form>';
+
+		document.body.appendChild(modal_bg);
+		document.body.appendChild(modal_form);
+		setTimeout(function(){
+			document.getElementById('modal_form').style.marginTop = '-400px';
+			document.getElementById('modal_bg').style.backgroundColor = 'gray';
+		}, 100);
 	}
 
 }
